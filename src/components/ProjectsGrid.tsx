@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import GridItem from "./GridItem";
+import data from "../helpers/data";
 
 const StyledGrid = styled.div`
   display: grid;
-  place-items: center;
+  place-items: start;
   padding: 40px 0px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
@@ -30,15 +31,14 @@ const StyledGrid = styled.div`
 function ProjectsGrid() {
   return (
     <StyledGrid>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
-      <GridItem title={"Projeto 1"}></GridItem>
+      {data.map((item: any) => (
+        <GridItem
+          key={item.id}
+          name={item.name}
+          description={item.description}
+          reference={item.reference}
+        />
+      ))}
     </StyledGrid>
   );
 }

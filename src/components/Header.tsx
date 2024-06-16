@@ -17,6 +17,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import ProjectsGrid from "./ProjectsGrid";
+import Ellpinho from "../assets/favicon-ellp.png";
+import styled from "styled-components";
 
 const drawerWidth = 320;
 
@@ -28,11 +30,15 @@ export default function ResponsiveDrawer(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-  const [selected, setSelected] = React.useState<string | null>(null);
+  const [selected, setSelected] = React.useState<string | null>('GridData');
 
-  const handleSelectedComponent: any = (item: string) => {
-    setSelected(item);
-  };
+  const StyleImg = styled.img`
+    margin-left: 20px;
+
+    @media only screen and (max-width: 768px) {
+     display: none;
+    }
+  `;
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -75,6 +81,7 @@ export default function ResponsiveDrawer(props: Props) {
 
       <List>
         <ListItem
+        sx={{ backgroundColor: selected === "GridData" ? "#" : "" }}
           disablePadding
           onClick={() => {
             setSelected("GridData");
@@ -151,6 +158,7 @@ export default function ResponsiveDrawer(props: Props) {
           >
             Projetos ELLP
           </Typography>
+            <StyleImg src={Ellpinho} height={30} />
         </Toolbar>
       </AppBar>
       <Box
